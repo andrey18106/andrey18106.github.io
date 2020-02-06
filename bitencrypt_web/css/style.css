@@ -48,9 +48,12 @@ blockquote {
 }
 
 .main textarea {
+    outline: none;
     background-color: #f2f2f2;
     width: 100%;
     transition: 0.3s;
+    border-radius: 20px;
+    padding: 10px 15px;
 }
 
 .main textarea:hover {
@@ -63,6 +66,8 @@ blockquote {
 }
 
 button.action_button {
+    outline: none;
+    border-radius: 50px;
     width: 110px;
     margin-top: 30px;
     display: inline-block;
@@ -105,5 +110,8 @@ button.action_button:hover {
     }
     .main h2 {
         font-size: 16px;
+    }
+    button.action_button {
+        margin-top: 20px;
     }
 }
