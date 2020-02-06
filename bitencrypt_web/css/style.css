@@ -14,7 +14,7 @@ html {
 }
 
 blockquote {
-    color: darkcyan;
+    color: #008b8b;
 }
 
 .container {
@@ -54,7 +54,7 @@ blockquote {
 }
 
 .main textarea:hover {
-    border-color: #000;
+    border-color: #008b8b;
 }
 
 #user_input {
@@ -70,6 +70,12 @@ button.action_button {
     background: #f2f2f2;
     cursor: pointer;
     padding: 5px 10px;
+    transition: 0.3s;
+}
+
+button.action_button:hover {
+    color: #008b8b;
+    border-color: #008b8b;
 }
 
 .footer {
@@ -81,6 +87,16 @@ button.action_button {
 .footer p {
     margin: 0;
     padding: 10px 0;
+}
+
+.footer a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #008b8b;
 }
 
 @media (max-width: 500px) {
