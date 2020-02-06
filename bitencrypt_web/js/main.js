@@ -60,12 +60,19 @@ function decrypt(encrypted_text) {
     return result
 }
 
+function clearSelection()
+    {
+        if (window.getSelection) {window.getSelection().removeAllRanges();}
+        else if (document.selection) {document.selection.empty();}
+    }
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const input_text = document.getElementById('user_input')
     const encrypt_btn = document.getElementsByClassName('encrypt_button')[0]
     const decrypt_btn = document.getElementsByClassName('derypt_button')[0]
     const clear_btn = document.getElementsByClassName('clear_button')[0]
+    const copy_btn = document.getElementsByClassName('copy_button')[0]
 
     encrypt_btn.addEventListener('click', function(e) {
         e.preventDefault()
@@ -82,6 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
     clear_btn.addEventListener('click', function(e) {
         e.preventDefault()
         input_text.value = ''
+    })
+
+
+    copy_btn.addEventListener('click', function(e) {
+        e.preventDefault()
+        input_text.select()
+        document.execCommand('copy')
     })
 
 });
