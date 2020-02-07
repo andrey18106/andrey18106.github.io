@@ -1,11 +1,3 @@
-// const alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 
-//                   'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 
-//                   'я']
-// const marks = [' ', '.', ',', ':', ';', '!', '?', '-', '/', '\\', '|', '[', ']', '(', ')', '+', 
-//                '=', '*', '^', '<', '>', '&', '%', '$', '#', '@','\'', '"', '~', '`', '₴', '0', 
-//                '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-
 const alphabet_dict = {
                 'а': 1, 'б': 2, 'в': 3, 'г': 4, 'д': 5, 'е': 6, 'ё': 7, 'ж': 8, 'з': 9, 'и': 10, 
                 'й': 11, 'к': 12, 'л': 13, 'м': 14, 'н': 15, 'о': 16, 'п': 17, 'р': 18, 'с': 19, 
@@ -13,7 +5,8 @@ const alphabet_dict = {
                 'ы': 29, 'ь': 30, 'э': 31, 'ю': 32, 'я': 33, 
                 'a': 34, 'b': 35, 'c': 36, 'd': 37, 'e': 38, 'f': 39, 'g': 40, 'h': 41, 'i': 42, 
                 'j': 43, 'k': 44, 'l': 45, 'm': 46, 'n': 47, 'o': 48, 'p': 49, 'q': 50, 'r': 51, 
-                's': 52, 't': 53, 'u': 54, 'v': 55, 'w': 56, 'x': 57, 'y': 58, 'z': 59
+                's': 52, 't': 53, 'u': 54, 'v': 55, 'w': 56, 'x': 57, 'y': 58, 'z': 59, 'є': 60, 
+                'і': 61, 'ї': 62, 'ґ': 63
                }
                
 const marks_dict = { 
@@ -21,17 +14,17 @@ const marks_dict = {
              '|': 11, '[': 12, ']': 13, '(': 14, ')': 15, '+': 16, '=': 17, '*': 18, '^': 19, 
              '<': 20, '>': 21, '&': 22, '%': 23, '$': 24, '#': 25, '@': 26, '\'': 27, '"': 28, 
              '~': 29, '`': 30, '₴': 31, '0': 32, '1': 33, '2': 34, '3': 35, '4': 36, '5': 37, 
-             '6': 38, '7': 39, '8': 40, '9': 41, '{': 42, '}': 43 
+             '6': 38, '7': 39, '8': 40, '9': 41, '{': 42, '}': 43, '\n': 44 
             }
 
 const alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 
            'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', 'a', 
            'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
-           's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+           's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'є', 'і', 'ї', 'ґ']
 
 const marks = [' ', '.', ',', ':', ';', '!', '?', '-', '/', '\\', '|', '[', ']', '(', ')', '+', '=', '*', 
         '^', '<', '>', '&', '%', '$', '#', '@','\'', '"', '~', '`', '₴', '0', '1', '2', '3', '4', 
-        '5', '6', '7', '8', '9', '{', '}']
+        '5', '6', '7', '8', '9', '{', '}', '\n']
 
 
 function binary(number, bits) {
@@ -88,12 +81,6 @@ function decrypt(encrypted_text) {
     return result
 }
 
-function clearSelection()
-    {
-        if (window.getSelection) {window.getSelection().removeAllRanges();}
-        else if (document.selection) {document.selection.empty();}
-    }
-
 document.addEventListener('DOMContentLoaded', function() {
 
     const input_text = document.getElementById('user_input')
@@ -101,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const decrypt_btn = document.getElementsByClassName('derypt_button')[0]
     const clear_btn = document.getElementsByClassName('clear_button')[0]
     const copy_btn = document.getElementsByClassName('copy_button')[0]
+
 
     encrypt_btn.addEventListener('click', function(e) {
         e.preventDefault()
