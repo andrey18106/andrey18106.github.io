@@ -89,16 +89,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const clear_btn = document.getElementsByClassName('clear_button')[0]
     const copy_btn = document.getElementsByClassName('copy_button')[0]
 
+    let startTime, endTime
+
+    function start() {
+      startTime = new Date()
+    }
+    
+    function end() {
+      endTime = new Date()
+      let elapsed = endTime - startTime
+      elapsed /= 1000
+      console.log(elapsed + " seconds")
+    }    
 
     encrypt_btn.addEventListener('click', function(e) {
         e.preventDefault()
+        start()
         input_text.value = encrypt(input_text.value)
+        end()
     })
     
     
     decrypt_btn.addEventListener('click', function(e) {
         e.preventDefault()
+        start()
         input_text.value = decrypt(input_text.value)
+        end()
     })
     
     
