@@ -30,11 +30,9 @@ const marks = [' ', '.', ',', ':', ';', '!', '?', '-', '/', '\\', '|', '[', ']',
 function binary(number, bits) {
     let zeros = ""
     number = (number >>> 0).toString(2)
-    if (number.length < bits) {
-        for (let i = 0; i < bits - number.length; i++) {
+    if (number.length < bits)
+        for (let i = 0; i < bits - number.length; i++)
             zeros += "0"       
-        }
-    }
     return zeros + number
 }
 
@@ -46,11 +44,10 @@ function encrypt(text) {
     let result = ""
     for (let i = 0; i < text.length; i++) {
         if (alphabet.indexOf(text[i].toLowerCase()) != -1) {
-            if (isUpper(text[i])) {
+            if (isUpper(text[i]))
                 result += "01"
-            } else {
+            else
                 result += "00"
-            }
             result += binary(alphabet_dict[text[i].toLowerCase()], 6)
         } else if (marks.indexOf(text[i]) != - 1) {
             result += "10"
@@ -64,19 +61,16 @@ function decrypt(encrypted_text) {
     let result = ""
     if (result.length % 8 == 0) {
         words = encrypted_text.match(/.{1,8}/g);
-        words.forEach(function(word, i, arr) {
-            let control_bits = word[0] + word[1]
+        words.forEach(function(word) {
             let number = word[2] + word[3] + word[4] + word[5] + word[6] + word[7]
             if (word[0] == "0") {
-                if (word[1] == "0") {
+                if (word[1] == "0")
                     result += alphabet[parseInt(number, 2) - 1]
-                } else {
+                else
                     result += alphabet[parseInt(number, 2) - 1].toUpperCase()
-                }
-            } else if (word[0] == "1") {
+            } else if (word[0] == "1")
                 result += marks[parseInt(number, 2) - 1]
-            }
-        });
+        })
     }
     return result
 }
