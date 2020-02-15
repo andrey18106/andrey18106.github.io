@@ -72,6 +72,18 @@ function decrypt(encrypted_text) {
     return result
 }
 
+function log_info(input_string, result_string, elapsed_time, is_encryption = true) {
+    console.groupCollapsed( (is_encryption) ? 'Encryption results' : 'Decryption results' )
+    console.log(`Elapsed: ${elapsed_time} s`)
+    console.log(`Symbols: ${input_string.length.toLocaleString()}`)
+    console.log(`Size: ${result_string.length.toLocaleString()} bytes`)
+    if (is_encryption)
+        console.log(`Is correct: [${input_string.length == (result_string.length / 8)}]`)
+    else
+        console.log(`Is correct: [${(input_string.length / 8) == result_string.length}]`)
+    console.groupEnd()
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const input_text = document.getElementById('user_input')
@@ -82,30 +94,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let startTime, endTime
 
-    function start() {
-      startTime = new Date()
-    }
-    
-    function end() {
-      endTime = new Date()
-      let elapsed = endTime - startTime
-      elapsed /= 1000
-      console.log(elapsed + " seconds")
-    }    
-
     encrypt_btn.addEventListener('click', function(e) {
         e.preventDefault()
-        start()
-        input_text.value = encrypt(input_text.value)
-        end()
+        let input_string = input_text.value
+        startTime = new Date()
+        let result_string = encrypt(input_text.value)
+        endTime = new Date()
+        input_text.value = result_string
+        log_info(input_string, result_string, ((endTime - startTime) / 1000), true)
     })
     
     
     decrypt_btn.addEventListener('click', function(e) {
         e.preventDefault()
-        start()
-        input_text.value = decrypt(input_text.value)
-        end()
+        let input_string = input_text.value
+        startTime = new Date()
+        let result_string = decrypt(input_text.value)
+        endTime = new Date()
+        input_text.value = result_string
+        log_info(input_string, result_string, ((endTime - startTime) / 1000), false)
     })
     
     
