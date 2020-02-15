@@ -55,6 +55,7 @@ blockquote {
     border-radius: 20px;
     padding: 10px 15px;
     margin: 0 auto;
+    resize: none;
 }
 
 .main textarea:hover {
