@@ -29,7 +29,7 @@ const marks = [' ', '.', ',', ':', ';', '!', '?', '-', '/', '\\', '|', '[', ']',
 
 function binary(number, bits) {
     let zeros = ""
-    number = (number >>> 0).toString(2)
+    number = number.toString(2)
     if (number.length < bits)
         for (let i = 0; i < bits - number.length; i++)
             zeros += "0"       
@@ -44,10 +44,7 @@ function encrypt(text) {
     let result = ""
     for (let i = 0; i < text.length; i++) {
         if (alphabet.indexOf(text[i].toLowerCase()) != -1) {
-            if (isUpper(text[i]))
-                result += "01"
-            else
-                result += "00"
+            isUpper(text[i]) ? result += "01" : result += "00"
             result += binary(alphabet_dict[text[i].toLowerCase()], 6)
         } else if (marks.indexOf(text[i]) != - 1) {
             result += "10"
