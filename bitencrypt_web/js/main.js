@@ -14,7 +14,7 @@ const marks_dict = {
              '|': 11, '[': 12, ']': 13, '(': 14, ')': 15, '+': 16, '=': 17, '*': 18, '^': 19, 
              '<': 20, '>': 21, '&': 22, '%': 23, '$': 24, '#': 25, '@': 26, '\'': 27, '"': 28, 
              '~': 29, '`': 30, '₴': 31, '0': 32, '1': 33, '2': 34, '3': 35, '4': 36, '5': 37, 
-             '6': 38, '7': 39, '8': 40, '9': 41, '{': 42, '}': 43, '\n': 44 
+             '6': 38, '7': 39, '8': 40, '9': 41, '{': 42, '}': 43, '\n': 44
             }
 
 const alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 
@@ -32,7 +32,7 @@ function binary(number, bits) {
     number = number.toString(2)
     if (number.length < bits)
         for (let i = 0; i < bits - number.length; i++)
-            zeros += "0"       
+            zeros += "0"
     return zeros + number
 }
 
@@ -55,8 +55,8 @@ function encrypt(text) {
 }
 
 function decrypt(encrypted_text) {
-    let result = ""
-    if (result.length % 8 == 0) {
+    let result = "" 
+    if (encrypted_text.length % 8 == 0 && new RegExp('[0-1]*').test(encrypted_text.length)) {
         words = encrypted_text.match(/.{1,8}/g);
         words.forEach(function(word) {
             let number = word[2] + word[3] + word[4] + word[5] + word[6] + word[7]
@@ -68,7 +68,8 @@ function decrypt(encrypted_text) {
             } else if (word[0] == "1")
                 result += marks[parseInt(number, 2) - 1]
         })
-    }
+    } else
+        result = '[Зашифрованная последовательность некорректная!]'
     return result
 }
 
