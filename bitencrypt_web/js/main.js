@@ -87,6 +87,8 @@ function log_info(input_string, result_string, elapsed_time, is_encryption = tru
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    const theme_switcher = document.getElementsByClassName('switch_theme_btn')[0]
+
     const input_text = document.getElementById('user_input')
     const encrypt_btn = document.getElementsByClassName('encrypt_button')[0]
     const decrypt_btn = document.getElementsByClassName('derypt_button')[0]
@@ -127,6 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault()
         input_text.select()
         document.execCommand('copy')
+    })
+
+    theme_switcher.addEventListener('click', function(e) {
+        document.documentElement.setAttribute('theme', 
+                                    (document.documentElement.getAttribute('theme') == 'dark' ? 
+                                    'light' : 'dark'))
     })
 
 });
