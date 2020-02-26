@@ -51,6 +51,7 @@ blockquote {
     width: 100%;
     text-align: center;
     padding: 10px 0;
+    background-color: var(--bg-color);
     box-shadow: 0 0 5px 2px var(--header-shadow-color);
 }
 
